@@ -20,17 +20,17 @@ public class ListaProductos {
 	/**
 	 * nombre de la lista de productos
 	 */
-	private String nombreLista;
+	public String nombreLista;
     /**
      * Estructura HashMap para almacenar los productos de la lista de productos
      * @see "HashMap java doc"
      */
-    private HashMap<String, Producto> listaP = new HashMap();
+    private HashMap<String, Producto> listaP = new HashMap<String, Producto>();
     
     /**
      * Cuenta calculada con el nÃºmero de productos contenidos en la lista
      */
-    private static int n = 0;
+    private int n = 0;
     
     private int getNumProductos() {
         return n;
@@ -49,7 +49,12 @@ public class ListaProductos {
     
         if ((campo.replace(" ","").isEmpty()) || (campo == null))  return true; else return false;
     }
-
+    
+    /**
+     * Si la cadena es valida lo nombra como 'noNamed'. Osino devuelve la variable 'nombre'.
+     * @param nombre cadena entregada
+     */
+    
     public ListaProductos(String nombre) {
     	if (parametro_vacio(nombre)) {
     		this.nombreLista = "noNamed";
@@ -58,10 +63,22 @@ public class ListaProductos {
     	this.nombreLista = nombre;
     	}
     }
+    
+    /**
+     * Te devuelve todos los productos registrados
+     * @return devuelve los nombres de los productos
+     */
+    
     public int totalProductos(){
             return this.getNumProductos();
     }
-        
+      
+    /**
+     * Agrega un nuevo producto a la lista
+     * @param prod producto
+     * @return Si ese producto existe te devuelve null. Osino crea uno y lo añade a 'listaP'. Tendrá un codigo para identificarlo
+     */
+    
     public Producto registraProducto(Producto prod) {
         
         if (listaP.containsKey(prod.getcode())) {
@@ -73,6 +90,13 @@ public class ListaProductos {
         return prod;
     }
 
+    /**
+     * Elimina un producto apartir del codigo
+     * Primero usa el metodo 'encuentraProducto' para ver si ese codigo existe y lo guarda en la variable 'prod'.
+     * @param codigo del producto
+     * @return Si prod es diferente de null elimina ese codigo de 'listaP'. Osino te devuelve otra vez el codigo.
+     */
+    
     public Producto descartaProducto(String codigo) { 
         
         Producto prod = encuentraProducto(codigo);
@@ -84,6 +108,12 @@ public class ListaProductos {
         return prod;
     }
 
+    /**
+     * Comprueba si el codigo pasado tiene una clave. 
+     * @param codigo para extraer su clave
+     * @return Si la clave no esta en 'listaP' te devuelve null. Osino la devuelve el codigo, que esta en 'listaP'.
+     */
+    
     public Producto encuentraProducto(String codigo) { 
         Producto prod = null;
         
