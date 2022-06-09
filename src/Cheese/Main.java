@@ -1,8 +1,8 @@
 /*
-*	grupo  :
-*	alumno :
-*	n.exp. :
-*	fecha  :
+*	grupo  : 1 GDAM
+*	alumno : cristian bermudez moral
+*	n.exp. : 7249
+*	fecha  : 09/06/2022
  */
 package Cheese;
 
