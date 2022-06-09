@@ -83,6 +83,8 @@ public class ListaProductos {
         
         if (listaP.containsKey(prod.getcode())) {
            return null;
+        }else if (parametro_vacio(prod.getcode())) {
+        	return null;
         }
         listaP.put(prod.getcode(), prod);
         n++;
@@ -104,6 +106,8 @@ public class ListaProductos {
 	        listaP.remove(codigo);
 	        n--;
 	        this.setNumProductos(n);
+        }else if(parametro_vacio(codigo)) {
+        	return null;
         }
         return prod;
     }
@@ -119,8 +123,9 @@ public class ListaProductos {
         
         if (!listaP.containsKey(codigo)) {
             return prod;
-        }
-        else{
+        }else if (parametro_vacio(codigo)) {
+        	return null;
+        }else{
             return listaP.get(codigo);
         }
     }
